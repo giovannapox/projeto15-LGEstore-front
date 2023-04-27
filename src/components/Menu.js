@@ -41,7 +41,7 @@ const ContainerMenu = styled.div`
 `
 
 const MenuLeft = styled.div`
-    margin-left: 450px;
+    margin-left: 470px;
     display: flex;
     gap: 40px;
 `
