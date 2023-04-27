@@ -7,11 +7,19 @@ export default function Menu () {
         <ContainerMenu>
                 <MenuLeft>
                     <Link to="/">Home</Link>
+                    <Link to="/">Ação e Aventura</Link>
+                    <Link to="/">Esporte</Link>
+                    <Link to="/">Luta</Link>
+                    <Link to="/">RPG</Link>
+                    <Link to="/">FPS</Link>
+                    <Link to="/">Corrida</Link>
+                    <Link to="/">Simulação</Link>
+                    <Link to="/">Terror</Link>
                 </MenuLeft>
                 <MenuRight>
-                    <Link to="/">Entrar</Link>
+                    <Link to="/login">Entrar</Link>
                     <Link to="/cadastro">Cadastrar</Link>
-                    <Link to="/login"><ion-icon name="cart"></ion-icon></Link>
+                    <Link to="/"><ion-icon name="cart"></ion-icon></Link>
                 </MenuRight>
         </ContainerMenu>
         </>
@@ -33,7 +41,7 @@ const ContainerMenu = styled.div`
 `
 
 const MenuLeft = styled.div`
-    margin-left: 150px;
+    margin-left: 450px;
     display: flex;
     gap: 40px;
 `
