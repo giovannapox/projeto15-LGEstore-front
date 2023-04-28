@@ -18,6 +18,8 @@ export default function SignInPage() {
         const promise = axios.post(url, user);
         promise.then((res) => {
             alert("Login realizado com sucesso!");
+            const token =  `Bearer ${res.data.token}`;
+            localStorage.setItem("token", token);
             navigate("/home");
         })
         promise.catch((err) => {
