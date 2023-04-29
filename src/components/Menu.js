@@ -7,14 +7,14 @@ export default function Menu () {
         <ContainerMenu>
                 <MenuLeft>
                     <Link to="/">Home</Link>
-                    <Link to="/">Ação e Aventura</Link>
-                    <Link to="/">Esporte</Link>
-                    <Link to="/">Luta</Link>
-                    <Link to="/">RPG</Link>
-                    <Link to="/">FPS</Link>
-                    <Link to="/">Corrida</Link>
-                    <Link to="/">Simulação</Link>
-                    <Link to="/">Terror</Link>
+                    <Link to="/acao-aventura">Ação e Aventura</Link>
+                    <Link to="/esporte">Esporte</Link>
+                    <Link to="/luta">Luta</Link>
+                    <Link to="/rpg">RPG</Link>
+                    <Link to="/fps">FPS</Link>
+                    <Link to="/corrida">Corrida</Link>
+                    <Link to="/simulacao">Simulação</Link>
+                    <Link to="/terror">Terror</Link>
                 </MenuLeft>
                 <MenuRight>
                     <Link to="/login">Entrar</Link>

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import Menu from "../components/Menu"
-import Topo from "../components/Topo";
-import styled from "styled-components";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import Topo from "../components/Topo";
+import Menu from "../components/Menu";
+import styled from "styled-components";
 
-export default function HomePage() {
+
+export default function LutaPage() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
@@ -18,12 +19,13 @@ export default function HomePage() {
         })
     }, [])
 
+    const luta = games.filter( games => games.type.includes("luta"))
     return (
         <>
             <Topo />
             <Menu />
             <JogosContainer>
-                {games.map((g) =>
+                {luta.map((g) =>
                     <DivJogo>
                         <img src={g.img} />
                         <h1>{g.title}</h1>
