@@ -1,22 +1,41 @@
+import { useEffect, useState } from "react";
 import Menu from "../components/Menu"
 import Topo from "../components/Topo";
 import styled from "styled-components";
+import axios from "axios";
 
 export default function HomePage() {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        const url = "http://localhost:5000/games";
+        const promise = axios.get(url)
+        promise.then((res) => {
+            setGames(res.data);
+        })
+        promise.catch((err) => {
+            return alert(err.response.data);
+        })
+    }, [])
+    console.log(games)
     return (
         <>
             <Topo />
             <Menu />
             <JogosContainer>
-                <DivJogo>
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1641233427" />
-                    <h1>Counter-Strike: Global Offensive</h1>
-                    <p>O Counter-Strike: Global Offensive (CS:GO) melhora a jogabilidade de ação baseada em equipes na qual foi pioneiro quando lançado há 19 anos.</p>
-                    <DivPrice>
-                        <p>Grátis</p>
-                        <button>Comprar</button>
-                    </DivPrice>
-                </DivJogo>
+                {games.map((g) =>
+                    <DivJogo>
+                        <img src={g.img} />
+                        <h1>{g.title}</h1>
+                        <p>{g.description}</p>
+                        <DivPrice>
+                            {(g.price === 0) ? <p>Grátis</p>
+                            : <p>R$ {g.price}</p>}
+                            <button>Comprar</button>
+                        </DivPrice>
+                    </DivJogo>
+                )}
+
             </JogosContainer>
         </>
     )
@@ -29,43 +48,53 @@ const JogosContainer = styled.div`
     background-color: #FFFAFA;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 `
 
 const DivJogo = styled.div`
     border-radius: 5px;
     margin-top: 20px;
     width: 280px;
-    height: 300px;
+    height: 390px;
     background-color: white;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.25));   
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.25));
+    position: relative;   
     img{
         width: 280px;
+        height: 200px;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
     }
     p{
-        margin-top: 15px;
-        font-size: 10px;
+        margin-top: 10px;
+        font-size: 11px;
         margin-left: 5px;
+        margin-right: 5px;
+        text-align: justify;
     }
     h1{
-        margin-top: 10px;
+        margin-top: 15px;
         font-size: 17px;
+        text-align: center;
     }
 `
 
 const DivPrice = styled.div`
     display: flex;
     margin-top: 15px;
-    gap: 100px;
+    gap: 70px;
+    position: absolute;
+    bottom: 10px;
+    justify-content: space-between;
     p{
         font-size: 20px;
         margin-left: 10px;
-        margin-top: 15px;
+        margin-top: 10px;
     }
     button{
         background-color: #00FF00;
