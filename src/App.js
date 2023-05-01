@@ -10,6 +10,7 @@ import RPGPage from "./pages/RPGPage";
 import SimulacaoPage from "./pages/SimulacaoPage";
 import TerrorPage from "./pages/TerrorPage";
 import CorridaPage from "./pages/CorridaPage";
+import Cart from "./pages/Cart";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/corrida" element={<CorridaPage />} />
           <Route path="/simulacao" element={<SimulacaoPage />} />
           <Route path="/terror" element={<TerrorPage />} />
+          <Route path="/cart" element={<Cart/>} />
         </Routes>
       </BrowserRouter>
     </>

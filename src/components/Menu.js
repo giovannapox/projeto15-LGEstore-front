@@ -19,7 +19,7 @@ export default function Menu () {
                 <MenuRight>
                     <Link to="/login">Entrar</Link>
                     <Link to="/cadastro">Cadastrar</Link>
-                    <Link to="/"><ion-icon name="cart"></ion-icon></Link>
+                    <Link to="/cart"><ion-icon name="cart"></ion-icon></Link>
                 </MenuRight>
         </ContainerMenu>
         </>

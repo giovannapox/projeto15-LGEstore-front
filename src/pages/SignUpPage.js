@@ -13,7 +13,7 @@ export default function SignUpPage() {
         e.preventDefault();
 
         if(body.password !== confirmPassword) return alert("As senhas não coincidem");
-        const url = "http://localhost:5000/cadastro";
+        const url = "http://localhost:5000/sign-up";
         const promise = axios.post(url, body);
         promise.then(() => {
             alert("Usuário cadastrado com sucesso!");

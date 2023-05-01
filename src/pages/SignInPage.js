@@ -14,13 +14,13 @@ export default function SignInPage() {
 
         if(!user) return alert("Preencha todos os campos");
 
-        const url = "http://localhost:5000/";
+        const url = "http://localhost:5000/sign-in";
         const promise = axios.post(url, user);
         promise.then((res) => {
             alert("Login realizado com sucesso!");
             const token =  `Bearer ${res.data.token}`;
             localStorage.setItem("token", token);
-            navigate("/home");
+            navigate("/");
         })
         promise.catch((err) => {
             alert(err.response.data);

@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default function HomePage() {
     const [games, setGames] = useState([]);
+    const [selectGames, setSelectGames] = useState([]);
 
     useEffect(() => {
         const url = "http://localhost:5000/games";
@@ -17,6 +18,10 @@ export default function HomePage() {
             return alert(err.response.data);
         })
     }, [])
+
+    function buyGames(){
+        
+    }
 
     return (
         <>
@@ -31,7 +36,7 @@ export default function HomePage() {
                         <DivPrice>
                             {(g.price === 0) ? <p>Grátis</p>
                             : <p>R$ {g.price}</p>}
-                            <button>Comprar</button>
+                            <button onClick={buyGames}>Comprar</button>
                         </DivPrice>
                     </DivJogo>
                 )}
