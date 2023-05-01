@@ -43,6 +43,7 @@ export default function Cart() {
             total: somaValores()
         }
 
+        console.log(body)
         const config = {
             headers: {
                 "Authorization": `${localStorage.getItem("token")}`
@@ -141,7 +142,7 @@ const ContainerTotal = styled.div`
     padding-right: 10px;
     padding-left: 10px;
     p{
-        font-size: 25px;
+        font-size: 30px;
     }
 `
 
@@ -159,6 +160,5 @@ const ContainerCart = styled.div`
     }
     p{
         margin-top: 20px;
-        font-size: 30px;
     }
 `
