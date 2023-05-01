@@ -24,7 +24,8 @@ export default function Cart() {
             return alert(err.response.data);
         })
     }, []);
-
+    console.log(cart)
+    
     function somaValores (){
         let total = 0;
         for(let i = 0; i < cart.length; i++){
@@ -35,10 +36,11 @@ export default function Cart() {
     }
 
     function finalizarCompra(){
-        const url = "http://localhost:5000/carts";
+        const url = "http://localhost:5000/checkout";
 
         const body = {
-            cart
+            cart,
+            total: somaValores()
         }
 
         const config = {
@@ -50,7 +52,7 @@ export default function Cart() {
         const promisse = axios.post(url,body,config)
 
         promisse.then((res)=>{
-            console.log("Compra realizada com sucesso")
+            alert("Compra realizada com sucesso")
         })
 
         promisse.catch((err)=>{
@@ -154,5 +156,9 @@ const ContainerCart = styled.div`
         height: 60px;
         margin-bottom: 20px;
         background-color: #00FF00;
+    }
+    p{
+        margin-top: 20px;
+        font-size: 30px;
     }
 `

@@ -18,6 +18,9 @@ export default function HomePage() {
         })
     }, [])
 
+
+    console.log(games)
+
     function buyGames(game){
 
         console.log(game)
