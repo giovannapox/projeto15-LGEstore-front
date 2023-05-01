@@ -9,7 +9,7 @@ export default function LutaPage() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        const url = "http://localhost:5000/games";
+        const url = `${process.env.REACT_APP_API_URL}/games`;
         const promise = axios.get(url)
         promise.then((res) => {
             setGames(res.data);
@@ -21,9 +21,7 @@ export default function LutaPage() {
 
     function buyGames(game){
 
-        console.log(game)
-
-        const url = "http://localhost:5000/carts";
+        const url = `${process.env.REACT_APP_API_URL}/carts`;
 
         const body = {
             title: game

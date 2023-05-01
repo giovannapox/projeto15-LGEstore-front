@@ -8,7 +8,7 @@ export default function HomePage() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        const url = "http://localhost:5000/games";
+        const url = `${process.env.REACT_APP_API_URL}/games`;
         const promise = axios.get(url)
         promise.then((res) => {
             setGames(res.data);
@@ -18,14 +18,9 @@ export default function HomePage() {
         })
     }, [])
 
-
-    console.log(games)
-
     function buyGames(game){
 
-        console.log(game)
-
-        const url = "http://localhost:5000/carts";
+        const url = `${process.env.REACT_APP_API_URL}/carts`;
 
         const body = {
             title: game
@@ -40,7 +35,7 @@ export default function HomePage() {
         const promisse = axios.post(url,body,config)
 
         promisse.then((res)=>{
-            console.log("ok")
+            alert("Adicionado ao carrinho com sucesso")
         })
 
         promisse.catch((err)=>{

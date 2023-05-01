@@ -14,7 +14,7 @@ export default function SignInPage() {
 
         if(!user) return alert("Preencha todos os campos");
 
-        const url = "http://localhost:5000/sign-in";
+        const url = `${process.env.REACT_APP_API_URL}/sign-in`;
         const promise = axios.post(url, user);
         promise.then((res) => {
             alert("Login realizado com sucesso!");

@@ -15,7 +15,7 @@ export default function Cart() {
             navigate("/");
             return;
         }
-        const url = "http://localhost:5000/carts";
+        const url = `${process.env.REACT_APP_API_URL}/carts`;
         const promise = axios.get(url, { headers: { "Authorization": `${localStorage.getItem("token")}` } })
         promise.then((res) => {
             setCart(res.data);
@@ -23,8 +23,7 @@ export default function Cart() {
         promise.catch((err) => {
             return alert(err.response.data);
         })
-    }, []);
-    console.log(cart)
+    }, [cart]);
     
     function somaValores (){
         let total = 0;
@@ -36,7 +35,7 @@ export default function Cart() {
     }
 
     function finalizarCompra(){
-        const url = "http://localhost:5000/checkout";
+        const url = `${process.env.REACT_APP_API_URL}/checkout`;
 
         const body = {
             cart,
