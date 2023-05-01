@@ -19,6 +19,34 @@ export default function SimulacaoPage() {
         })
     }, [])
 
+    function buyGames(game){
+
+        console.log(game)
+
+        const url = "http://localhost:5000/carts";
+
+        const body = {
+            title: game
+        }
+
+        const config = {
+            headers: {
+                "Authorization": `${localStorage.getItem("token")}`
+            } 
+        }
+
+        const promisse = axios.post(url,body,config)
+
+        promisse.then((res)=>{
+            alert("Adicionado ao carrinho com sucesso")
+        })
+
+        promisse.catch((err)=>{
+            console.log(err.response.message)
+        })
+
+    }
+
     const simulacao = games.filter( games => games.type.includes("simulação"))
     return (
         <>
@@ -33,7 +61,7 @@ export default function SimulacaoPage() {
                         <DivPrice>
                             {(g.price === 0) ? <p>Grátis</p>
                             : <p>R$ {g.price}</p>}
-                            <button>Comprar</button>
+                            <button onClick={()=>buyGames(g.title)}>Comprar</button>
                         </DivPrice>
                     </DivJogo>
                 )}

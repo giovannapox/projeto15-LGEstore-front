@@ -6,7 +6,6 @@ import axios from "axios";
 
 export default function HomePage() {
     const [games, setGames] = useState([]);
-    const [selectGames, setSelectGames] = useState([]);
 
     useEffect(() => {
         const url = "http://localhost:5000/games";
@@ -19,8 +18,32 @@ export default function HomePage() {
         })
     }, [])
 
-    function buyGames(){
-        
+    function buyGames(game){
+
+        console.log(game)
+
+        const url = "http://localhost:5000/carts";
+
+        const body = {
+            title: game
+        }
+
+        const config = {
+            headers: {
+                "Authorization": `${localStorage.getItem("token")}`
+            } 
+        }
+
+        const promisse = axios.post(url,body,config)
+
+        promisse.then((res)=>{
+            console.log("ok")
+        })
+
+        promisse.catch((err)=>{
+            console.log(err.response.message)
+        })
+
     }
 
     return (
@@ -36,7 +59,7 @@ export default function HomePage() {
                         <DivPrice>
                             {(g.price === 0) ? <p>Grátis</p>
                             : <p>R$ {g.price}</p>}
-                            <button onClick={buyGames}>Comprar</button>
+                            <button onClick={()=>buyGames(g.title)}>Comprar</button>
                         </DivPrice>
                     </DivJogo>
                 )}

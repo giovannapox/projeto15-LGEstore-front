@@ -16,7 +16,7 @@ export default function Cart () {
             return;
           }
         const url = "http://localhost:5000/carts";
-        const promise = axios.get(url, { headers: {"Authorization": localStorage.getItem("token") } })
+        const promise = axios.get(url, { headers: {"Authorization": `${localStorage.getItem("token")}` } })
         promise.then((res) => {
             setCart(res.data);
         })
